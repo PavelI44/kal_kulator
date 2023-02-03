@@ -1,0 +1,57 @@
+import java.util.Locale;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите сумму взятых в кредит денег, ежемесячный платеж, процентную ставку и тип клиента), соответственно: ");
+        String h = "human";
+        String b = "business";
+        double sum = in.nextDouble();
+        double plat = in.nextDouble();
+        double stavka = in.nextDouble();
+        String tip = in.next();
+        I(sum, plat, stavka, tip, h, b);
+        int a = 0;
+        for (h.equals(tip); 0 == a; a++) {
+            if (h.equals(tip) == false) break;
+            hum(sum, plat, stavka, tip, h, b);
+        }
+        for (b.equals(tip); 0 == a; a++) {
+            if (b.equals(tip) == false) break;
+            bus(sum, plat, stavka, tip, h, b);
+        }
+    }
+    public static void I(double sum, double plat, double stavka, String tip, String h, String b) {
+        double god = 0;
+        god = (sum * stavka / 100) / plat;
+        if (god > 30 | sum <= 0 | plat <= 0 | stavka <= 0 | (h.equals(tip) == false && b.equals(tip) == false)) {
+            System.out.println("throws Exception");
+            System.exit(0);
+        }
+    }
+    public static void hum(double sum, double plat, double stavka, String tip, String h, String b) {
+        double dolg = 0;
+        while (sum > plat) {
+            if (sum < plat) break;
+            sum = sum - plat;
+            dolg = dolg + (plat * stavka / 100);
+        }
+        dolg = dolg + (sum * stavka / 100);
+        System.out.println(dolg);
+    }
+        public static void bus(double sum, double plat, double stavka, String tip, String h, String b) {
+            double dolg = 0;
+            int m = 0;
+                while (sum > plat) {
+                    if (sum < plat) break;
+                    for (b.equals(tip); m < 12; m++) {
+                        sum = sum - plat;
+                    }
+                    sum = sum - plat;
+                    dolg = dolg + (plat * stavka / 100);
+                }
+                dolg = dolg + (sum * stavka / 100);
+            System.out.println(dolg);
+            }
+        }
